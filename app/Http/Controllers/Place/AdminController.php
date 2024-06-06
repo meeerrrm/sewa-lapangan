@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Place;
 
 use App\Http\Controllers\AdminController as AC;
 use App\Http\Requests\PlaceCreateRequest;
+use App\Http\Requests\PlaceFieldCreateRequest;
+use App\Http\Requests\PlaceFieldUpdateRequest;
+use App\Http\Requests\PlaceUpdateRequest;
 use App\Models\Place;
 use App\Models\PlaceField;
 use Illuminate\Http\Request;
@@ -40,10 +43,22 @@ class AdminController extends AC
         
     }
     public function update($code){
-        
+        $place = Place::findCode($code);
+        $facilities = json_decode($place->facilities);
+
+        return view('admin.place.update',compact('place','facilities'));
     }
-    public function update_action($code,Request $request){
-        
+    public function update_action($code,PlaceUpdateRequest $request){
+        $validate = $request->validated();
+
+        $old = Place::findCode($code);
+        if(empty($old)){ return redirect(route('admin.place.index',))->with('error','Orginal Data Not Found!'); }
+
+        $validate['facilities'] = json_encode($validate['facilities']);
+        $validate['photo'] = $request->file('photo') ? $this->file_store($request->file('photo')): $old->photo;
+
+        Place::where('id',$old->id)->update($validate);
+        return redirect(route('admin.place.show',$code))->with('success','Success Update Place');
     }
     public function delete($code){
         
@@ -52,11 +67,36 @@ class AdminController extends AC
         $place = Place::findCode($code);
         return view('admin.place.show',compact('place'));
     }
-    public function field_create_action($code, Request $request){
+    public function field_create($code){
+        $listType = ['Basket','Futsal','Badminton'];
+        $place = Place::findCode($code);
+        return view('admin.place.field_create',compact('listType','place'));
+    }
+    public function field_create_action($code,PlaceFieldCreateRequest $request){
+        $place = Place::findCode($code);
+
+        $validate = $request->validated();
+        $validate['place_id'] = $place->id;
+        
+        PlaceField::create($validate);
+        
+        return redirect(route('admin.place.show',$code))->with('success','Success Add Field Type!');
+    }
+    public function field_update($code,$id){
+        $place = Place::findCode($code);
+        $field = PlaceField::findOrFail($id);
+
+        return view('admin.place.field_update',compact('place','field'));
         
     }
-    public function field_update_action($code, Request $request){
-        
+    public function field_update_action($code,$id,PlaceFieldUpdateRequest $request){
+        $validate = $request->validated();
+        $old = PlaceField::where('id',$id)->first();
+        if(empty($old)){ return redirect(route('admin.place.show',[$code]))->with('error','Orginal Data Not Found!'); }
+
+        PlaceField::where('id',$id)->update($validate);
+
+        return redirect(route('admin.place.show',$code))->with('success','Success Update Field');
     }
     public function field_total_action($code,$field_id,$type){
         $update = PlaceField::findOrFail($field_id);
@@ -65,9 +105,6 @@ class AdminController extends AC
         if($update->save()){
             return redirect(route('admin.place.show',$code))->with('success','Success Update Total Field!');
         }
-    }
-    public function field_delete_action($code, $field_id){
-        
     }
     
 }

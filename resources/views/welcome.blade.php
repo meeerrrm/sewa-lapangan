@@ -79,13 +79,13 @@
                 <div class="max-w-7xl mx-auto py-24 pb-32">
                     <h2 class="uppercase font-bold text-7xl text-white">Choose Your Sport</h2>
                     <div class="grid grid-cols-3 gap-8 pt-24">
-                        <a href="#" class=" transition-all hover:scale-105">
+                        <a href="{{ route('order','Basket') }}" class=" transition-all hover:scale-105">
                             <img src="{{ url('assets/images/basket.png') }}" alt="Basket Ball">
                         </a>
-                        <a href="#" class=" transition-all hover:scale-105">
+                        <a href="{{ route('order','Futsal') }}" class=" transition-all hover:scale-105">
                             <img src="{{ url('assets/images/futsal.png') }}" alt="Basket Ball">
                         </a>
-                        <a href="#" class=" transition-all hover:scale-105">
+                        <a href="{{ route('order','Badminton') }}" class=" transition-all hover:scale-105">
                             <img src="{{ url('assets/images/badminton.png') }}" alt="Basket Ball">
                         </a>
                     </div>

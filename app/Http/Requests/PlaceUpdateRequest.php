@@ -11,7 +11,7 @@ class PlaceUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class PlaceUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>['required'],
+            'maps'=>['required'],
+            'phone_number'=>['required'],
+            'address'=>['required'],
+            'photo'=>['sometimes','image','mimes:jpeg,jpg,png,gif'],
+            'facilities'=>['required'],
         ];
     }
 }

@@ -28,7 +28,6 @@
 @endif
             <div class="mt-4">
                 <div class="shadow bg-white rounded p-4 flex justify-between gap-2">
-                    <x-text-input placeholder="Search" />
                     <x-a href="{{ route('admin.place.create') }}" color="primary">Create</x-a>
                 </div>
             </div>
@@ -47,15 +46,15 @@
                         <tbody>
 @foreach($places as $place)                            
                             <tr>
-                                <td class="border text-center uppercase px-4 py-2">{{ $place->name }}</td>
-                                <td class="border text-center uppercase px-4 py-2">{{ $place->address }} </td>
-                                <td class="border text-center uppercase px-4 py-2">0</td>
-                                <td class="border text-center uppercase px-4 py-2">
+                                <td class="border text-center px-4 py-2">{{ $place->name }}</td>
+                                <td class="border text-center px-4 py-2">{{ $place->address }} </td>
+                                <td class="border text-center px-4 py-2">0</td>
+                                <td class="border text-center px-4 py-2">
 @foreach($place->field as $field)
                                     {{ $field->field_type }} <br>
 @endforeach                                    
                                 </td>
-                                <td class="border text-center uppercase px-4 py-2">
+                                <td class="border text-center px-4 py-2">
                                     <x-a href="{{ route('admin.place.show',$place->code) }}" color="success">Detail</x-a>
                                 </td>
                             </tr>

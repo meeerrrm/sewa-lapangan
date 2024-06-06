@@ -11,7 +11,7 @@ class PlaceFieldUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class PlaceFieldUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'field_type'=>['required'],
+            'field_number'=>['required'],
+            'price_on_hour'=>['required'],
         ];
     }
 }

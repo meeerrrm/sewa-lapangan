@@ -23,16 +23,16 @@ use Illuminate\Support\Facades\Route;
 
             Route::get('/{code}',[Place::class,'show'])->name('show');
 
+            Route::get('/{code}/create',[Place::class,'field_create'])->name('field.create');
             Route::post('/{code}/create',[Place::class,'field_create_action'])->name('field.create_action');
-            Route::put('/{code}/update/{id}',[Place::class,'field_update_action'])->name('field.update_action');
-            Route::delete('/{code}/delete/{id}',[Place::class,'field_delete_action'])->name('field.delete_action');
+
+            Route::get('/{code}/update/{id}',[Place::class,'field_update'])->name('field.update');
             Route::get('/{code}/update/{id}/{type}',[Place::class,'field_total_action'])->name('field.total_action');
+            Route::put('/{code}/update/{id}',[Place::class,'field_update_action'])->name('field.update_action');
         });
         Route::prefix('trx')
          ->name('trx.')
          ->group(function(){
             Route::get('/',[Trx::class,'show']);
-            Route::get('/sort-date/{range_one}/{range_two}',[Trx::class,'sort_by_date']);
-            Route::get('/sort-place/{code}',[Trx::class,'sort_by_place']);
         });
     });

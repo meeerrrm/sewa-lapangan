@@ -14,4 +14,7 @@ class PlaceField extends Model
         'field_number',
         'price_on_hour',
     ];
+    public function place(){
+        return $this->belongsTo(Place::class);
+    }
 }

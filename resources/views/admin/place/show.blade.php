@@ -79,10 +79,10 @@
     @if($field->deleted_at != NULL)
                                         <x-a href="#" color="success" class="has-tooltip mt-2">✓
                                             <span class='tooltip rounded shadow-lg p-1 px-2 bg-slate-700 -mt-24'>Reactive Field</span>
-                                        </x-a>sss
+                                        </x-a>
     @else
-                                        <x-a href="#" color="danger" class="has-tooltip mt-2">X
-                                            <span class='tooltip rounded shadow-lg p-1 px-2 bg-slate-700 -mt-24'>Deactive Field</span>
+                                        <x-a href="{{ route('admin.place.field.update',[$place->code,$field->id]) }}" color="danger" class="has-tooltip mt-2">✎
+                                            <span class='tooltip rounded shadow-lg p-1 px-2 bg-slate-700 -mt-24'>Update Field</span>
                                         </x-a>
     @endif
                                     </td>
@@ -91,6 +91,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <x-a href="{{ route('admin.place.field.create',$place->code) }}" color="primary" class="mt-4">Add new Field</x-a>
                 </div>
                 <div class="shadow bg-white rounded p-4 pb-8 mt-4">
                     <h2 class="text-xl font-bold">Order Log</h2>
@@ -98,7 +99,7 @@
             </div>
             <div class="shadow bg-white rounded p-4 pb-6 mt-4">
                 <x-a href="{{ route('admin.place.index') }}">Back</x-a>
-                <x-a href="#" color="warning">Update</x-a>
+                <x-a href="{{ route('admin.place.update',$place->code) }}" color="warning">Update</x-a>
             </div>
         </div>
     </div>
