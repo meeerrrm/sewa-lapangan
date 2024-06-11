@@ -95,6 +95,27 @@
                 </div>
                 <div class="shadow bg-white rounded p-4 pb-8 mt-4">
                     <h2 class="text-xl font-bold">Order Log</h2>
+                    <table class="w-full table-auto mt-4">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+@foreach($place->trx->take(5) as $trx)                            
+                            <tr>
+                                <td class="text-center">{{ $trx->place_field->field_type }}</td>
+                                <td class="text-center">{{ $trx->start }}</td>
+                                <td class="text-center">{{ $trx->status }}</td>
+                            </tr>
+@endforeach                            
+                        </tbody>
+                    </table>
+                    <div class="mt-4">
+                        <x-a href="{{ route('admin.trx.index') }}">Show All</x-a>
+                    </div>
                 </div>
             </div>
             <div class="shadow bg-white rounded p-4 pb-6 mt-4">

@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-Ubuntu antialiased ">
+<x-client-layout>
         <header class="w-full h-screen bg-slate-800 pt-42 py-52">
             <div class="max-w-7xl mx-auto">
                 <h1 class="text-4xl text-center uppercase font-bold text-white">Booking</h1>
@@ -35,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div method="POST" class="w-full rounded shadow-lg bg-[#b9f501] p-12 mt-12" enctype="multipart/form-data">
+                    <div class="w-full rounded shadow-lg bg-[#b9f501] p-12 mt-12">
                         
                         <h2 class="text-3xl text-center uppercase font-bold">Order Detail</h2>
                         <div class="mt-2">
@@ -72,9 +56,15 @@
                             <label for="">Status</label>
                             <input type="text" class="block w-full rounded border-none" readonly value="{{ $trx->status }}">
                         </div>
+                        <div class="mt-4">
+                            <x-a href="{{ route('trx',$trx->code) }}" color="secondary">Back</x-a>
+@if($trx->status == "payment-wait")                            
+                            <x-a href="{{ route('payment',$trx->code) }}" color="danger">Payment</x-a>
+@endif
+                        </div>
                     </div>
+
                 </div>
             </div>
         </header>
-    </body>
-</html>
+</x-client-layout>

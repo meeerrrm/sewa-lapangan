@@ -28,4 +28,7 @@ class Place extends Model
     public function rating(){
         return $this->hasMany(PlaceField::class);
     }
+    public function trx(){
+        return $this->hasMany(Trx::class);
+    }
 }

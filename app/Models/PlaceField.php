@@ -17,4 +17,7 @@ class PlaceField extends Model
     public function place(){
         return $this->belongsTo(Place::class);
     }
+    public function trx(){
+        return $this->hasMany(Trx::class);
+    }
 }

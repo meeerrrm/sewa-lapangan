@@ -38,6 +38,7 @@ class UserController extends Controller
     }
     public function trx(){
         $trxes = Trx::where('user_id',Auth::user()->id)->get();
+        return view('client.trx',compact('trxes'));
     }
     public function trx_show($trx_code){
         $trx = Trx::findCode($trx_code);

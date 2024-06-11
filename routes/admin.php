@@ -33,6 +33,8 @@ use Illuminate\Support\Facades\Route;
         Route::prefix('trx')
          ->name('trx.')
          ->group(function(){
-            Route::get('/',[Trx::class,'show']);
+            Route::get('/',[Trx::class,'index'])->name('index');
+            Route::get('/{code}/detail',[Trx::class,'update'])->name('update');
+            Route::put('/{code}/detail',[Trx::class,'update_action'])->name('update_action');
         });
     });

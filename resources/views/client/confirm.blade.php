@@ -47,11 +47,23 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="mt-2">
                                 <label for="">Check-in</label>
-                                <input type="time" class="block w-full rounded border-none" id="start_time" name="start_time" min="12:00" max="23:59" required>
+                                {{-- <input type="time" class="block w-full rounded border-none" id="start_time" name="start_time" min="12:00" max="23:59" required> --}}
+                                <select name="start_time" id="start_time" class="block w-full rounded border-none" required>
+                                    <option value="">--SELECT TIME--</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="18:00">18:00</option>
+                                </select>
                             </div>
                             <div class="mt-2">
                                 <label for="">Total Rental Time</label>
-                                <input type="number" class="block w-full rounded border-none" id="qty" name="qty" required>
+                                {{-- <input type="number" class="block w-full rounded border-none" id="qty" name="qty" required> --}}
+                                <select name="qty" id="qty" class="block w-full rounded border-none" required>
+                                    <option value="">--SELECT HOUR--</option>
+                                    <option value="1">1 Hour</option>
+                                    <option value="2">2 Hour</option>
+                                    <option value="3">3 Hour</option>
+                                </select>
                             </div>
                         </div>
                         <div class="mt-4">
@@ -73,7 +85,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function(){
-                $('#qty').keyup(function(){
+                $('#qty').change(function(){
                     let priceOnHour = $('#price_on_hour').val();
 
 
