@@ -5,7 +5,7 @@
             </div>
         </header>
         <main>
-            <section id="why-us" class="w-full bg-red-400 bg-center bg-no-repeat bg-cover" style="background-image:url('{{ url('assets/images/bg.jpeg') }}')">
+            <section id="about" class="w-full bg-red-400 bg-center bg-no-repeat bg-cover" style="background-image:url('{{ url('assets/images/bg.jpeg') }}')">
                 <div class="w-full h-full bg-black/50">
                     <div class="max-w-7xl mx-auto py-24 pb-32">
                         <h2 class="uppercase font-bold text-7xl text-white">why us?</h2>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </section>
-            <section id="choose-sports" class=" bg-zinc-950 border-8 border-[#b9f501]">
+            <section id="booking" class=" bg-zinc-950 border-8 border-[#b9f501]">
                 <div class="max-w-7xl mx-auto py-24 pb-32">
                     <h2 class="uppercase font-bold text-7xl text-white">Choose Your Sport</h2>
                     <div class="grid grid-cols-3 gap-8 pt-24">

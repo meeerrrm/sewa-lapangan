@@ -22,14 +22,14 @@
                 </div>
             </div>
             <div class="p-2 px-8 relative flex text-white text-lg">
-                <a href="#" 
-                 class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Home</a>
-                <a href="#" 
-                 class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">About</a>
-                <a href="#" 
-                 class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Booking</a>
-                <a href="#" 
-                 class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Contact</a>
+                <a href="{{ url('/') }}#" 
+                class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Home</a>
+               <a href="{{ url('/') }}#about" 
+                class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">About</a>
+               <a href="{{ url('/') }}#booking" 
+                class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Booking</a>
+               <a href="{{ url('/') }}#contact" 
+                class="px-4 text-[#b9f501] after:transition-all after:content-[''] after:block after:my-1 after:bg-[#b9f501] after:w-full after:h-[2px] after:rounded-full after:scale-0 hover:after:scale-75">Contact</a>  
 @if(Auth::check())
     @if(Auth::user()->role == "Client")
                 <a href="{{ route('trx') }}" 
@@ -53,7 +53,7 @@
             </div>
         </nav>
         {{ $slot }}
-        <footer class=" bg-gradient-to-b from-[#b9f501] to-[#1d2700]">
+        <footer id="contact" class=" bg-gradient-to-b from-[#b9f501] to-[#1d2700]">
             <div class="max-w-7xl mx-auto py-12 pb-24">
                 <div class="grid grid-cols-3 gap-8">
                     <div>

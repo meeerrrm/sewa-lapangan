@@ -121,6 +121,7 @@
             <div class="shadow bg-white rounded p-4 pb-6 mt-4">
                 <x-a href="{{ route('admin.place.index') }}">Back</x-a>
                 <x-a href="{{ route('admin.place.update',$place->code) }}" color="warning">Update</x-a>
+                <x-a href="{{ route('admin.place.delete',$place->code) }}" onclick="return confirm('Are you sure you want to delete this item?');" color="danger">Delete</x-a>
             </div>
         </div>
     </div>

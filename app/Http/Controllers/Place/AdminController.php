@@ -9,6 +9,7 @@ use App\Http\Requests\PlaceFieldUpdateRequest;
 use App\Http\Requests\PlaceUpdateRequest;
 use App\Models\Place;
 use App\Models\PlaceField;
+use App\Models\Trx;
 use Illuminate\Http\Request;
 
 
@@ -61,7 +62,12 @@ class AdminController extends AC
         return redirect(route('admin.place.show',$code))->with('success','Success Update Place');
     }
     public function delete($code){
+        $place = Place::findCode($code);
+        PlaceField::where('place_id',$place->id)->delete();
+        Trx::where('place_id',$place->id)->delete();
+        $place->delete();
         
+        return back();
     }
     public function show($code){
         $place = Place::findCode($code);

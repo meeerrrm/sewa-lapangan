@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
             Route::post('/create',[Place::class,'create_action'])->name('create_action');
             Route::get('/update/{code}',[Place::class,'update'])->name('update');
             Route::put('/update/{code}',[Place::class,'update_action'])->name('update_action');
-            Route::delete('/delete/{code}',[Place::class,'delete_action'])->name('delete_action');
+            Route::get('/delete/{code}',[Place::class,'delete'])->name('delete');
 
             Route::get('/{code}',[Place::class,'show'])->name('show');
 
