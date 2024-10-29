@@ -35,6 +35,12 @@
                                 <h3 class="font-bold text-4xl">Diverse Court Options</h3>
                             </div>
                         </div>
+                        <div class="text-center">
+                            <img src="{{ url('assets/images/1.jpg') }}" class="mx-auto mt-4">
+                        </div>
+                        <div class="text-center">
+                            <img src="{{ url('assets/images/2.jpg') }}" class="mx-auto mt-4">
+                        </div>
                     </div>
                 </div>
             </section>
